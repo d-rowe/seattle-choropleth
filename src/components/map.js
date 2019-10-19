@@ -4,10 +4,12 @@ import geojson from '../geojson/census.geojson';
 import Neighborhood from './neighborhood';
 import '../styles/components/map.css';
 
+// TODO Add captioned scale (legend)
 class Map extends React.Component {
   state = { neighborhoods: null, viewBox: null };
 
   componentDidMount() {
+    // TODO Set range based on selected feature property (put logic in utils)
     this.range = [15, 55];
     this.setHoods();
   }
@@ -29,6 +31,7 @@ class Map extends React.Component {
     let path = d3.geoPath().projection(projection);
 
     d3.json(geojson).then(data => {
+      // TODO Use multicolor scale
       const colorRange = d3
         .scaleQuantile()
         .domain(d3.range(...this.range))
