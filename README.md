@@ -1,0 +1,1 @@
+Choropleth map of Seattle area census data
