@@ -1,11 +1,11 @@
 import React from 'react';
 import '../styles/components/neighborhood.css';
 
-const Neighborhood = ({ path, properties, colorRange }) => {
+const Neighborhood = ({ path, properties, color }) => {
   return (
     <path
       d={path}
-      fill={colorRange(properties.MEDIAN_AGE)}
+      fill={color}
       className="neighborhood"
       onClick={() => console.log(properties.MEDIAN_AGE)}
     />

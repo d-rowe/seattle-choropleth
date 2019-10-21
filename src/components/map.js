@@ -6,11 +6,15 @@ import '../styles/components/map.css';
 
 // TODO Add captioned scale (legend)
 class Map extends React.Component {
-  state = { neighborhoods: null, viewBox: null };
+  state = {
+    censusEntry: 'MEDIAN_AGE',
+    dataRange: [15, 55],
+    neighborhoods: null,
+    viewBox: null
+  };
 
   componentDidMount() {
     // TODO Set range based on selected feature property (put logic in utils)
-    this.range = [15, 55];
     this.setHoods();
   }
 
@@ -34,17 +38,18 @@ class Map extends React.Component {
       // TODO Use multicolor scale
       const colorRange = d3
         .scaleQuantile()
-        .domain(d3.range(...this.range))
-        .range(d3.schemeBlues[9]);
+        .domain(d3.range(...this.state.dataRange))
+        .range(d3.schemeGnBu[9]);
 
       // Map features to Neighborhood components
       let neighborhoods = data.features.map((feature, i) => {
         const properties = feature.properties;
+        const color = colorRange(properties[this.state.censusEntry]);
         return (
           <Neighborhood
             path={path(feature)}
             properties={properties}
-            colorRange={colorRange}
+            color={color}
             key={i}
           />
         );
