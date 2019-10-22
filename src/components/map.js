@@ -19,7 +19,7 @@ class Map extends React.Component {
   }
 
   setViewBox() {
-    const tPadding = 75;
+    const tPadding = 90;
     const bBox = this.refs.mapSvg.getBBox();
     this.setState({
       viewBox: `${bBox.x} ${bBox.y - tPadding} ${bBox.width} ${bBox.height +

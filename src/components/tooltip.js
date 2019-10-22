@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/components/tooltip.css';
 
 const Tooltip = ({ info, x, y, width, height, show }) => {
   const tip = show ? (
@@ -8,7 +9,7 @@ const Tooltip = ({ info, x, y, width, height, show }) => {
       </div>
     </foreignObject>
   ) : null;
-  return(tip);
+  return tip;
 };
 
 export default Tooltip;

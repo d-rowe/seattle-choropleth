@@ -11,7 +11,7 @@ class Neighborhood extends React.Component {
 
   center() {
     const { x, y, width } = this.refs.npath.getBBox();
-    this.setState({ center: { x: x + width / 2 - 150, y: y - 70 } });
+    this.setState({ center: { x: x + width / 2 - 150, y: y - 90 } });
   }
 
   render() {
@@ -35,7 +35,7 @@ class Neighborhood extends React.Component {
           info={this.props.properties.MEDIAN_AGE + ' years old'}
           x={this.state.center.x}
           y={this.state.center.y}
-          height={60}
+          height={80}
           width={300}
           show={this.state.hovered}
         />
