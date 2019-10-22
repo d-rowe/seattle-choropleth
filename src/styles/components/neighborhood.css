@@ -6,6 +6,6 @@
 .npath:hover {
   stroke: black;
   stroke-width: 5px;
-  transition: all 50ms ease-out;
-  transform: scale(1.08);
+  transition: transform 150ms ease-in-out;
+  transform: scale(1.05);
 }
