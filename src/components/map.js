@@ -2,6 +2,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import geojson from '../geojson/census.geojson';
 import Neighborhood from './neighborhood';
+import anime from 'animejs';
 import '../styles/components/map.css';
 
 // TODO Add captioned scale (legend)
@@ -24,6 +25,15 @@ class Map extends React.Component {
     this.setState({
       viewBox: `${bBox.x} ${bBox.y - tPadding} ${bBox.width} ${bBox.height +
         tPadding}`
+    });
+  }
+
+  animate() {
+    anime({
+      targets: '.npath',
+      opacity: [0, 1],
+      easing: 'linear',
+      delay: anime.stagger(5) // increase delay by 100ms for each elements.
     });
   }
 
@@ -58,6 +68,7 @@ class Map extends React.Component {
       });
       this.setState({ neighborhoods });
       this.setViewBox();
+      this.animate();
     });
   }
 
