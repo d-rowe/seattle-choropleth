@@ -1,11 +1,12 @@
 .npath {
   transform-origin: center;
   transform-box: fill-box;
+  transition: transform 150ms ease-in-out;
+  transition: fill 300ms;
 }
 
 .npath:hover {
   stroke: black;
   stroke-width: 5px;
-  transition: transform 150ms ease-in-out;
   transform: scale(1.05);
 }

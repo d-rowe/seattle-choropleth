@@ -5,6 +5,7 @@ import Neighborhood from './neighborhood';
 import entryRanges from '../utils/entryRanges';
 import anime from 'animejs';
 import '../styles/components/map.css';
+import { connect } from 'react-redux';
 
 // TODO Add captioned scale (legend)
 class Map extends React.Component {
@@ -14,12 +15,14 @@ class Map extends React.Component {
       neighborhoods: null,
       viewBox: null
     };
-    entryRanges.then(r => this.setState({ dataRanges: r }));
   }
 
   componentDidMount() {
     // TODO Set range based on selected feature property (put logic in utils)
-    this.setHoods();
+    entryRanges.then(r => {
+      this.setState({ dataRanges: r });
+      this.setHoods();
+    });
   }
 
   setViewBox() {
@@ -38,6 +41,20 @@ class Map extends React.Component {
       easing: 'linear',
       delay: anime.stagger(4)
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      // this.clear();
+      this.setHoods();
+    }
+  }
+
+  clear() {
+    const nNode = this.refs.neighborhoods;
+    while (nNode.firstChild) {
+      nNode.removeChild(nNode.firstChild);
+    }
   }
 
   setHoods() {
@@ -68,9 +85,10 @@ class Map extends React.Component {
           />
         );
       });
+      const initialDraw = this.state.viewBox === null;
       this.setState({ neighborhoods });
       this.setViewBox();
-      this.animate();
+      initialDraw && this.animate();
     });
   }
 
@@ -78,10 +96,17 @@ class Map extends React.Component {
     return (
       <div className='map-container'>
         <svg viewBox={this.state.viewBox} className='map-svg' ref='mapSvg'>
-          <g className='neighborhoods'>{this.state.neighborhoods}</g>
+          <g className='neighborhoods' ref='neighborhoods'>
+            {this.state.neighborhoods}
+          </g>
         </svg>
       </div>
     );
   }
 }
-export default Map;
+
+const mapStateToProps = state => {
+  return { entry: state.entry };
+};
+
+export default connect(mapStateToProps)(Map);
