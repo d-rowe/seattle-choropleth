@@ -6,6 +6,8 @@ import '../styles/components/selector.css'
 const entries = {
   'Median Age': 'MEDIAN_AGE',
   'Median Household Income': 'MEDIAN_HH_INC_PAST_12MO_DOLLAR',
+  'Median Gross Rent': 'MEDIAN_GROSS_RENT',
+  'Percent Own Occupied Housing Unit':'PCT_OWN_OCC_HU',
   Population: 'TOTAL_POPULATION'
 };
 

@@ -21,7 +21,7 @@ class Map extends React.Component {
     // TODO Set range based on selected feature property (put logic in utils)
     entryRanges.then(r => {
       this.setState({ dataRanges: r });
-      this.setHoods();
+      this.draw();
     });
   }
 
@@ -45,19 +45,11 @@ class Map extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
-      // this.clear();
-      this.setHoods();
+      this.draw();
     }
   }
 
-  clear() {
-    const nNode = this.refs.neighborhoods;
-    while (nNode.firstChild) {
-      nNode.removeChild(nNode.firstChild);
-    }
-  }
-
-  setHoods() {
+  draw() {
     let projection = d3
       .geoAlbers()
       .scale(500000)
