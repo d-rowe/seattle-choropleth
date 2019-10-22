@@ -7,8 +7,8 @@ import '../styles/components/map.css';
 // TODO Add captioned scale (legend)
 class Map extends React.Component {
   state = {
-    censusEntry: 'MEDIAN_AGE',
-    dataRange: [15, 55],
+    censusEntry: 'MEDIAN_HH_INC_PAST_12MO_DOLLAR',
+    dataRange: [0, 170000],
     neighborhoods: null,
     viewBox: null
   };
@@ -19,7 +19,7 @@ class Map extends React.Component {
   }
 
   setViewBox() {
-    const tPadding = 90;
+    const tPadding = 110;
     const bBox = this.refs.mapSvg.getBBox();
     this.setState({
       viewBox: `${bBox.x} ${bBox.y - tPadding} ${bBox.width} ${bBox.height +
@@ -50,7 +50,7 @@ class Map extends React.Component {
         return (
           <Neighborhood
             path={path(feature)}
-            properties={properties}
+            data={`$${properties[this.state.censusEntry]}`}
             color={color}
             key={i}
           />
@@ -64,7 +64,7 @@ class Map extends React.Component {
   render() {
     return (
       <div className='map-container'>
-        <h4>Seattle Median Age</h4>
+        <h4>Household Income</h4>
         <svg viewBox={this.state.viewBox} className='map-svg' ref='mapSvg'>
           <g className='neighborhoods'>{this.state.neighborhoods}</g>
         </svg>

@@ -11,7 +11,7 @@ class Neighborhood extends React.Component {
 
   center() {
     const { x, y, width } = this.refs.npath.getBBox();
-    this.setState({ center: { x: x + width / 2 - 150, y: y - 90 } });
+    this.setState({ center: { x: x + width / 2 - 150, y: y - 110 } });
   }
 
   render() {
@@ -22,7 +22,6 @@ class Neighborhood extends React.Component {
           d={this.props.path}
           fill={this.props.color}
           className='npath'
-          onClick={() => console.log(this.props.properties.MEDIAN_AGE)}
           onMouseOver={() => {
             this.setState({ hovered: true });
             select(this.refs.neighborhood).raise();
@@ -32,7 +31,7 @@ class Neighborhood extends React.Component {
           }}
         />
         <Tooltip
-          info={this.props.properties.MEDIAN_AGE + ' years old'}
+          info={this.props.data}
           x={this.state.center.x}
           y={this.state.center.y}
           height={80}
