@@ -19,9 +19,11 @@ class Map extends React.Component {
   }
 
   setViewBox() {
+    const tPadding = 75;
     const bBox = this.refs.mapSvg.getBBox();
     this.setState({
-      viewBox: `${bBox.x} ${bBox.y} ${bBox.width} ${bBox.height}`
+      viewBox: `${bBox.x} ${bBox.y - tPadding} ${bBox.width} ${bBox.height +
+        tPadding}`
     });
   }
 
@@ -61,8 +63,8 @@ class Map extends React.Component {
 
   render() {
     return (
-      <svg viewBox={this.state.viewBox} className="mapSvg" ref="mapSvg">
-        <g className="neighborhoods">{this.state.neighborhoods}</g>
+      <svg viewBox={this.state.viewBox} className='mapSvg' ref='mapSvg'>
+        <g className='neighborhoods'>{this.state.neighborhoods}</g>
       </svg>
     );
   }
