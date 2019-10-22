@@ -5,8 +5,8 @@ import './styles/App.css';
 const App = () => {
   // TODO Add selector for different census data
   return (
-    <div className="app">
-      <Map />
+    <div className='app'>
+      <Map entry='AVERAGE_HOUSEHOLD_SIZE' />
     </div>
   );
 };
