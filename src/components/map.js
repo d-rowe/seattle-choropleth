@@ -63,9 +63,12 @@ class Map extends React.Component {
 
   render() {
     return (
-      <svg viewBox={this.state.viewBox} className='mapSvg' ref='mapSvg'>
-        <g className='neighborhoods'>{this.state.neighborhoods}</g>
-      </svg>
+      <div className='map-container'>
+        <h4>Seattle Median Age</h4>
+        <svg viewBox={this.state.viewBox} className='map-svg' ref='mapSvg'>
+          <g className='neighborhoods'>{this.state.neighborhoods}</g>
+        </svg>
+      </div>
     );
   }
 }

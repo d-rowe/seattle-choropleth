@@ -1,5 +1,9 @@
-.mapSvg {
+.map-svg {
   height: auto;
-  max-height: 100vh;
+  max-height: 90vh;
   padding: 10px 0 10px 0;
+}
+
+.map-container {
+  text-align: center;
 }

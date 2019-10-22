@@ -1,9 +1,10 @@
 import React from 'react';
+import Tooltip from './tooltip';
 import { select } from 'd3';
 import '../styles/components/neighborhood.css';
 
 class Neighborhood extends React.Component {
-  state = { hovered: false };
+  state = { hovered: false, center: { x: 0, y: 0 } };
   componentDidMount() {
     this.center();
   }
@@ -14,20 +15,6 @@ class Neighborhood extends React.Component {
   }
 
   render() {
-    const tip = this.state.hovered ? (
-      <foreignObject
-        x={this.state.center.x}
-        y={this.state.center.y}
-        width='300'
-        height='50'
-        className='tip'
-      >
-        <div className='tip'>
-          <h1>{this.props.properties.MEDIAN_AGE + ' years old'}</h1>
-        </div>
-      </foreignObject>
-    ) : null;
-
     return (
       <g ref='neighborhood'>
         <path
@@ -44,7 +31,14 @@ class Neighborhood extends React.Component {
             this.setState({ hovered: false });
           }}
         />
-        {tip}
+        <Tooltip
+          info={this.props.properties.MEDIAN_AGE + ' years old'}
+          x={this.state.center.x}
+          y={this.state.center.y}
+          height={60}
+          width={300}
+          show={this.state.hovered}
+        />
       </g>
     );
   }
