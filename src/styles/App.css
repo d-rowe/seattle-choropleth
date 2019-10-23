@@ -1,12 +1,10 @@
 .app {
   display: flex;
-  /* flex-direction: column; */
-  /* -items: center; */
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-html,
-body,
-#root,
-.app {
-  height: 100%;
+html {
+  height: 100vh;
+  overflow: auto;
 }

@@ -2,14 +2,13 @@
   transform-origin: center;
   transform-box: fill-box;
   transition: transform 150ms ease-in-out;
-  transition: fill 1s ease-in-out;
+  transition: fill 1s cubic-bezier(0.23, 1, 0.32, 1);
   stroke: black;
-  stroke-opacity: 0.6;
+  stroke-opacity: 0.75;
   stroke-width: 1px;
 }
 
 .npath:hover {
-  stroke: black;
+  stroke-opacity: 1;
   stroke-width: 5px;
-  transform: scale(1.05);
 }

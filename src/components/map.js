@@ -37,9 +37,9 @@ class Map extends React.Component {
   animate() {
     anime({
       targets: '.npath',
-      opacity: [0, 1],
-      easing: 'linear',
-      delay: anime.stagger(4)
+      scale: [0, 1],
+      easing: 'spring',
+      delay: anime.stagger(10)
     });
   }
 

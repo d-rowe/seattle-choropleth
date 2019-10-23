@@ -4,19 +4,18 @@ import { connect } from 'react-redux';
 import '../styles/components/selector.css';
 
 const entries = {
-  'Median Age': 'MEDIAN_AGE',
-  'Median Household Income ($)': 'MEDIAN_HH_INC_PAST_12MO_DOLLAR',
-  'Unemployment (%)': 'PERCENT_UNEMPLOYED',
-  'Median Gross Rent ($)': 'MEDIAN_GROSS_RENT',
-  'Median Housing Unit Value ($)': 'HU_VALUE_MEDIAN_DOLLARS',
-  'Graduated High School (%)': 'PCNT_HIGHSCHOOL_GRAD_OR_HIGHER',
-  "Bachelor's Degree (%)": 'PCT_BACHELOR_DEGREE_OR_HIGHER',
-  'Living In Poverty (%)': 'PCT_POPULATION_UNDER_POVERTY',
-  'Vacant Housing Units (%)': 'PCT_VACANT_HU',
-  'People of Color (%)': 'PCT_PERSON_OF_COLOR',
-  'Housing Unit Ownership (%)': 'PCT_OWN_OCC_HU',
-  'People Per Acre': 'POP_DENSITY_ACRE',
-  'Households Per Acre': 'HH_DENSITY_ACRE'
+  'Age': 'MEDIAN_AGE',
+  'Household Income': 'MEDIAN_HH_INC_PAST_12MO_DOLLAR',
+  'Unemployment': 'PERCENT_UNEMPLOYED',
+  'Rent': 'MEDIAN_GROSS_RENT',
+  'House Price': 'HU_VALUE_MEDIAN_DOLLARS',
+  'High School Education': 'PCNT_HIGHSCHOOL_GRAD_OR_HIGHER',
+  "Undergraduate Education": 'PCT_BACHELOR_DEGREE_OR_HIGHER',
+  'Poverty': 'PCT_POPULATION_UNDER_POVERTY',
+  'Vacant Houses': 'PCT_VACANT_HU',
+  'People of Color': 'PCT_PERSON_OF_COLOR',
+  'House Ownership': 'PCT_OWN_OCC_HU',
+  'Population Density': 'POP_DENSITY_ACRE',
 };
 
 const Selector = ({ setEntry }) => {
