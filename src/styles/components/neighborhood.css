@@ -2,7 +2,7 @@
   transform-origin: center;
   transform-box: fill-box;
   transition: transform 150ms ease-in-out;
-  transition: fill 1s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: fill 2s cubic-bezier(0.23, 1, 0.32, 1);
   stroke: black;
   stroke-opacity: 0.75;
   stroke-width: 1px;
