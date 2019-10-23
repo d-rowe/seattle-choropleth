@@ -2,7 +2,10 @@
   transform-origin: center;
   transform-box: fill-box;
   transition: transform 150ms ease-in-out;
-  transition: fill 300ms;
+  transition: fill 1s ease-in-out;
+  stroke: black;
+  stroke-opacity: 0.6;
+  stroke-width: 1px;
 }
 
 .npath:hover {

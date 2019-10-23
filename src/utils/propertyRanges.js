@@ -1,13 +1,6 @@
-import geojson from '../geojson/census.geojson';
-import { json } from 'd3';
-
-const entryRanges = new Promise((resolve, reject) => {
-  json(geojson).then(entry => resolve(mergeValues(entry.features)));
-});
-
-const mergeValues = features => {
+const propertyRanges = geojson => {
   let merged = {};
-  features.forEach(f => {
+  geojson.features.forEach(f => {
     const props = f.properties;
     Object.keys(props).forEach(p => {
       if (merged[p]) {
@@ -27,4 +20,4 @@ const mergeValues = features => {
   return ranged;
 };
 
-export default entryRanges;
+export default propertyRanges;

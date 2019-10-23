@@ -2,7 +2,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import geojson from '../geojson/census.geojson';
 import Neighborhood from './neighborhood';
-import entryRanges from '../utils/entryRanges';
+import propertyRanges from '../utils/propertyRanges';
 import anime from 'animejs';
 import '../styles/components/map.css';
 import { connect } from 'react-redux';
@@ -18,9 +18,9 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-    // TODO Set range based on selected feature property (put logic in utils)
-    entryRanges.then(r => {
-      this.setState({ dataRanges: r });
+    d3.json(geojson).then(j => {
+      this.djson = j;
+      this.setState({ propertyRanges: propertyRanges(j) });
       this.draw();
     });
   }
@@ -58,30 +58,28 @@ class Map extends React.Component {
 
     let path = d3.geoPath().projection(projection);
 
-    d3.json(geojson).then(data => {
-      const colorRange = d3
-        .scaleQuantile()
-        .domain(d3.range(...this.state.dataRanges[this.props.entry]))
-        .range(d3.schemeGnBu[9]);
+    const colorRange = d3
+      .scaleQuantile()
+      .domain(d3.range(...this.state.propertyRanges[this.props.entry]))
+      .range(d3.schemeGnBu[9]);
 
-      // Map features to Neighborhood components
-      let neighborhoods = data.features.map((feature, i) => {
-        const properties = feature.properties;
-        const color = colorRange(properties[this.props.entry]);
-        return (
-          <Neighborhood
-            path={path(feature)}
-            data={properties[this.props.entry]}
-            color={color}
-            key={i}
-          />
-        );
-      });
-      const initialDraw = this.state.viewBox === null;
-      this.setState({ neighborhoods });
-      this.setViewBox();
-      initialDraw && this.animate();
+    // Map features to Neighborhood components
+    let neighborhoods = this.djson.features.map((feature, i) => {
+      const properties = feature.properties;
+      const color = colorRange(properties[this.props.entry]);
+      return (
+        <Neighborhood
+          path={path(feature)}
+          data={properties[this.props.entry]}
+          color={color}
+          key={i}
+        />
+      );
     });
+    const initialDraw = this.state.viewBox === null;
+    this.setState({ neighborhoods });
+    this.setViewBox();
+    initialDraw && this.animate();
   }
 
   render() {

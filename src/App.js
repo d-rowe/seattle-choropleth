@@ -6,7 +6,10 @@ import './styles/App.css';
 const App = () => {
   return (
     <div className='app'>
-      <Selector />
+      <div className='box'>
+        <Selector />
+      </div>
+
       <Map />
     </div>
   );
