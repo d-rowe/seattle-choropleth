@@ -1,14 +1,15 @@
 import React from 'react';
+import '../styles/layout/navbar.css';
 
 const Navbar = () => (
   <nav
-    className='navbar is-primary has-shadow'
+    className='navbar is-link box'
     role='navigation'
     aria-label='main navigation'
   >
     <div className='navbar-brand'>
       <div className='navbar-item' href='/'>
-        <h1>Seattle Census Data</h1>
+        <h1>Seattle Choropleth Map</h1>
       </div>
       <div
         role='button'

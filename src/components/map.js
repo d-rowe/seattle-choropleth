@@ -39,7 +39,7 @@ class Map extends React.Component {
       targets: '.npath',
       scale: [0, 1],
       easing: 'spring',
-      delay: anime.stagger(10)
+      delay: anime.stagger(15)
     });
   }
 
@@ -85,7 +85,7 @@ class Map extends React.Component {
   render() {
     return (
       <div className='map-container'>
-        <svg viewBox={this.state.viewBox} className='map-svg' ref='mapSvg'>
+        <svg viewBox={this.state.viewBox} className='map-svg is-centered' ref='mapSvg'>
           <g className='neighborhoods' ref='neighborhoods'>
             {this.state.neighborhoods}
           </g>

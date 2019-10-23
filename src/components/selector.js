@@ -14,13 +14,15 @@ const entries = {
     Unemployment: 'PERCENT_UNEMPLOYED'
   },
   Density: {
-    'Population Density': 'POP_DENSITY_ACRE'
+    'Population Density': 'POP_DENSITY_ACRE',
+    'Housing Unit Density': 'HU_DENSITY_ACRE',
+    'Household Density': 'HH_DENSITY_ACRE'
   },
   Housing: {
     Rent: 'MEDIAN_GROSS_RENT',
     'House Price': 'HU_VALUE_MEDIAN_DOLLARS',
-    'Vacant Houses': 'PCT_VACANT_HU',
-    'House Ownership': 'PCT_OWN_OCC_HU'
+    'Vacant Housing Unit': 'PCT_VACANT_HU',
+    'House Unit Ownership': 'PCT_OWN_OCC_HU'
   }
 };
 
@@ -40,12 +42,14 @@ const Selector = ({ setEntry }) => {
     </optgroup>
   ));
   return (
-    <select
-      onChange={e => setEntry(nameKeys[e.target.value])}
-      className='entry-select'
-    >
-      {options}
-    </select>
+    <div className='select'>
+      <select
+        onChange={e => setEntry(nameKeys[e.target.value])}
+        className='entry-select'
+      >
+        {options}
+      </select>
+    </div>
   );
 };
 
