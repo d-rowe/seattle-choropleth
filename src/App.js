@@ -9,13 +9,13 @@ const App = () => {
     <div>
       <Navbar />
       <div className='app'>
-        <div class='columns'>
-          <div class='column'>
+        <div className='columns'>
+          <div className='column'>
             <div className='box'>
               <Selector />
             </div>
           </div>
-          <div class='column'>
+          <div className='column'>
             <div className='box'>
               <Map />
             </div>

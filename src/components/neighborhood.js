@@ -34,7 +34,7 @@ class Neighborhood extends React.Component {
           info={this.props.data}
           x={this.state.center.x}
           y={this.state.center.y}
-          height={80}
+          height={100}
           width={300}
           show={this.state.hovered}
         />

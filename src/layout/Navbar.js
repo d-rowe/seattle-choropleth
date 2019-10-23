@@ -7,10 +7,10 @@ const Navbar = () => (
     aria-label='main navigation'
   >
     <div className='navbar-brand'>
-      <a className='navbar-item' href='/'>
+      <div className='navbar-item' href='/'>
         <h1>Seattle Census Data</h1>
-      </a>
-      <a
+      </div>
+      <div
         role='button'
         className='navbar-burger burger'
         aria-label='menu'
@@ -20,13 +20,12 @@ const Navbar = () => (
         <span aria-hidden='true'></span>
         <span aria-hidden='true'></span>
         <span aria-hidden='true'></span>
-      </a>
+      </div>
     </div>
 
     <div className='navbar-menu'>
       <div className='navbar-start'>
-        <a className='navbar-item'>Source</a>
-
+        {/* <p className='navbar-item'>Source</p> */}
       </div>
     </div>
   </nav>
