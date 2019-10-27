@@ -6,13 +6,13 @@ import propertyRanges from '../utils/propertyRanges';
 import anime from 'animejs';
 import '../styles/components/map.css';
 import { connect } from 'react-redux';
+import Legend from './legend';
 
 // TODO Add captioned scale (legend)
 class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      neighborhoods: null,
       viewBox: null
     };
   }
@@ -36,10 +36,10 @@ class Map extends React.Component {
 
   animate() {
     anime({
-      targets: '.npath',
+      targets: '.animate',
       scale: [0, 1],
       easing: 'spring',
-      delay: anime.stagger(15)
+      delay: anime.stagger(10)
     });
   }
 
@@ -58,10 +58,21 @@ class Map extends React.Component {
 
     let path = d3.geoPath().projection(projection);
 
+    let range = this.state.propertyRanges[this.props.entry];
+    range = d3
+      .scaleLinear()
+      .domain(range)
+      .nice()
+      .domain();
+    const colorNums = 10;
+    const step = (range[1] - range[0]) / colorNums;
+
     const colorRange = d3
       .scaleQuantile()
-      .domain(d3.range(...this.state.propertyRanges[this.props.entry]))
+      .domain(d3.range(...range, step))
       .range(d3.schemeGnBu[9]);
+
+    let legend = <Legend colorRange={colorRange} />;
 
     // Map features to Neighborhood components
     let neighborhoods = this.djson.features.map((feature, i) => {
@@ -77,7 +88,7 @@ class Map extends React.Component {
       );
     });
     const initialDraw = this.state.viewBox === null;
-    this.setState({ neighborhoods });
+    this.setState({ neighborhoods, legend });
     this.setViewBox();
     initialDraw && this.animate();
   }
@@ -85,7 +96,12 @@ class Map extends React.Component {
   render() {
     return (
       <div className='map-container'>
-        <svg viewBox={this.state.viewBox} className='map-svg is-centered' ref='mapSvg'>
+        <svg
+          viewBox={this.state.viewBox}
+          className='map-svg is-centered'
+          ref='mapSvg'
+        >
+          {this.state.legend}
           <g className='neighborhoods' ref='neighborhoods'>
             {this.state.neighborhoods}
           </g>

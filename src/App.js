@@ -11,11 +11,7 @@ const App = () => {
       <div className='app'>
         <div className='columns'>
           <div className='column'>
-            <div className='box'>
-              <Selector />
-            </div>
-          </div>
-          <div className='column'>
+            <Selector />
             <div className='box'>
               <Map />
             </div>

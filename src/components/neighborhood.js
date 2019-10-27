@@ -21,7 +21,7 @@ class Neighborhood extends React.Component {
           ref='npath'
           d={this.props.path}
           fill={this.props.color}
-          className='npath'
+          className='npath animate'
           onMouseOver={() => {
             this.setState({ hovered: true });
             select(this.refs.neighborhood).raise();

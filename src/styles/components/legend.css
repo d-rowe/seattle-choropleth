@@ -1,0 +1,10 @@
+.legend-color {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.legend-label {
+  font-size: 50px;
+  text-anchor: middle;
+}
+
