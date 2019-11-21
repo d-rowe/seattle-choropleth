@@ -1,25 +1,16 @@
-import React from 'react';
-import Map from './components/map';
-import Selector from './components/selector';
-import './styles/App.css';
-import Navbar from './layout/Navbar';
+import React from "react";
+import Map from "./components/map";
+import Selector from "./components/selector";
+import "./styles/App.css";
 
-const App = () => {
-  return (
-    <div>
-      <Navbar />
-      <div className='app'>
-        <div className='columns'>
-          <div className='column'>
-            <Selector />
-            <div className='box'>
-              <Map />
-            </div>
-          </div>
-        </div>
-      </div>
+const App = () => (
+  <div className="app">
+    <h2 className="title">Seattle Census Data Mapped</h2>
+    <Selector />
+    <div className="box">
+      <Map />
     </div>
-  );
-};
+  </div>
+);
 
 export default App;

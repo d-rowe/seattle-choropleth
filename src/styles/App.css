@@ -1,11 +1,13 @@
 .app {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 1rem;
+  align-items: center;
+  min-height: 100vh;
 }
 
 html {
-  height: 100vh;
+  min-height: 100vh;
   overflow: auto;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
